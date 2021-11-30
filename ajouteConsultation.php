@@ -1,10 +1,7 @@
 <?php
 
 
-$server = "localhost" ;
-$login = "root";
-$mdp = "root";
-$db = "projetphp";
+require 'connect.php';
 
 
 
@@ -31,14 +28,8 @@ $SqlQuery = "INSERT INTO consultation (id_patient, DateRdv, HeureRdv, dureeConsu
 VALUES ('$id_patient', '$DateRdv', '$HeureRdv', '$dureeConsultation', '$id_medecin')";
 
 
-///Connexion au serveur MySQL
- try {
- $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
- }
- ///Capture des erreurs éventuelles
- catch (Exception $e) {
- die('Erreur : ' . $e->getMessage());
- }
+
+
 
  
   $res = $linkpdo->exec($SqlQuery);

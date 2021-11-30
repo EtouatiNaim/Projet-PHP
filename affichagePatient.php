@@ -1,20 +1,14 @@
 <?php
 
-$server = "localhost" ;
-$login = "root";
-$mdp = "root";
-$db = "projetphp";
- ///Connexion au serveur MySQL
- try {
- $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
- }
- ///Capture des erreurs éventuelles
- catch (Exception $e) {
- die('Erreur : ' . $e->getMessage());
- }
+require 'connect.php';
  
 
-$res = $linkpdo->query("SELECT * FROM patient");
+$res = $linkpdo->query("
+SELECT p.civilite, p.nom, p.prenom, p.ville, p.codePostal, p.adresse, p.dateNaissance, p.lieuNaissance, p.numSecuriteSociale, m.nom, m.prenom
+FROM patient p, medecin m
+WHERE p.id_medecin = m.id_medecin
+
+");
 if ($res == false){
     echo 'il y a probleme methode query';
 }
@@ -30,14 +24,15 @@ if ($res == false){
 										<th>dateNaissance</th>
 										<th>lieuNaissance</th>
 										<th>numSecuriteSociale</th>
+										<th>Médecin référent</th>
 										</tr>';
 
                     while ($data = $res->fetch()) {
-                        echo '<tr><td>'.$data['civilite'].'</td><td>'.$data['nom'].'</td><td>'.
-                        $data['prenom'].'</td><td>'.$data['ville'].'</td><td>'.
-                        $data['codePostal'].'</td><td>'.$data['adresse'].'</td><td>'.
-                        $data['dateNaissance'].'</td><td>'.$data['lieuNaissance'].'</td><td>'.
-						$data['numSecuriteSociale']."</td><td>
+                        echo '<tr><td>'.$data[0].'</td><td>'.$data[1].'</td><td>'.
+                        $data[2].'</td><td>'.$data[3].'</td><td>'.
+                        $data[4].'</td><td>'.$data[5].'</td><td>'.
+                        $data[6].'</td><td>'.$data[7].'</td><td>'.
+						$data[8].'</td><td>'.$data[9].' '.$data[10]."</td><td>
                         <a href='modificationPatient.php?id_patient=$data[0]'>modifier</a> </td><td>
                         <a href='supprimerPatient.php?id_patient=$data[0]'>supprimer</a> </td></tr>";
                      }

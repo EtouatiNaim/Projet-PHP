@@ -1,17 +1,6 @@
 <?php
 
-$server = "localhost" ;
-$login = "root";
-$mdp = "root";
-$db = "projetphp";
- ///Connexion au serveur MySQL
- try {
- $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
- }
- ///Capture des erreurs éventuelles
- catch (Exception $e) {
- die('Erreur : ' . $e->getMessage());
- }
+require 'connect.php';
  
 if(!isset($_POST['Valider'])){
 	$id = $_GET['id_medecin'];

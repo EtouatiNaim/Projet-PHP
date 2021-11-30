@@ -1,24 +1,14 @@
 <?php
 
-$server = "localhost" ;
-$login = "root";
-$mdp = "root";
-$db = "projetphp";
- ///Connexion au serveur MySQL
- try {
- $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
- }
- ///Capture des erreurs éventuelles
- catch (Exception $e) {
- die('Erreur : ' . $e->getMessage());
- }
+require 'connect.php';
  
 
 $res = $linkpdo->query("
 SELECT c.DateRdv, c.HeureRdv, c.dureeConsultation, p.nom, p.prenom, m.nom, m.prenom 
 FROM consultation c, patient p, medecin m
 where c.id_patient = p.id_patient
-and c.id_medecin = m.id_medecin;");
+and c.id_medecin = m.id_medecin
+ORDER BY c.DateRdv,c.HeureRdv;");
 if ($res == false){
     echo 'il y a probleme methode query';
 }
@@ -36,10 +26,10 @@ if ($res == false){
 										</tr>';
 
                     while ($data = $res->fetch()) {
-                        echo '<tr><td>'.$data['p.nom'].'</td><td>'.$data['p.prenom'].'</td><td>'.
-                        $data['c.DateRdv'].'</td><td>'.$data['c.HeureRdv'].'</td><td>'.
-                        $data['c.dureeConsultation'].'</td><td>'.$data['m.nom'].'</td><td>'.
-                        $data['m.prenom']."</td><td>";
+                        echo '<tr><td>'.$data[3].'</td><td>'.$data[4].'</td><td>'.
+                        $data[0].'</td><td>'.$data[1].'</td><td>'.
+                        $data[2].'</td><td>'.$data[5].'</td><td>'.
+                        $data[6]."</td><tr>";
                      }
                     echo '</table>';
 

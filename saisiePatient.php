@@ -12,6 +12,7 @@
  <p>dateNaissance : <input type="date" name="dateNaissance" /></p>
  <p>Lieu de naissance : <input type="text" name="lieuNaissance" /></p>
  <p>Numéro de sécurité sociale : <input type="text" name="numSecuriteSociale" /></p>
+ <p>Médecin référant : <input type="text" name="nomMedecin" /></p>
  
  <p><input type="submit" value="envoyer"><input type="reset" value="vider"></p>
 </form>

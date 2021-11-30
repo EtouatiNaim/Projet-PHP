@@ -1,11 +1,6 @@
 <?php
 
-
-$server = "localhost" ;
-$login = "root";
-$mdp = "root";
-$db = "projetphp";
-
+require 'connect.php';
 
 
 $nom = $_POST['nom'];
@@ -27,14 +22,7 @@ $SqlQuery = "INSERT INTO medecin (nom, prenom, civilite)
 VALUES ('$nom', '$prenom', '$civilite')";
 
 
-///Connexion au serveur MySQL
- try {
- $linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
- }
- ///Capture des erreurs éventuelles
- catch (Exception $e) {
- die('Erreur : ' . $e->getMessage());
- }
+
 
  
   $res = $linkpdo->exec($SqlQuery);
