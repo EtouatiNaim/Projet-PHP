@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Modification medecin
+</title>
+</head>
+<body>
+
 <?php
 
 require 'connect.php';
@@ -61,3 +70,6 @@ if ($res == false){
 </form>
 
 <p><a href=affichagePatient.php>Retour à la liste des médecins</a></p>
+
+</body>
+</html>

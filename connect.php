@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Connexion
+</title>
+</head>
+<body>
+
 <?php
 $server = "localhost" ;
 $login = "root";
@@ -12,3 +21,6 @@ $db = "projetphp";
  die('Erreur : ' . $e->getMessage());
  }
  ?>
+ 
+ </body>
+</html>

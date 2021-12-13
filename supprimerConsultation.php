@@ -17,7 +17,7 @@ if(!isset($_POST['Valider'])){
 					
 if (isset($_POST['Valider'])) {
 						
-	$id = $_POST['id_medecin'];				
+	$id = $_POST['id_medeci'];				
 	$res = $linkpdo->exec("DELETE FROM medecin WHERE id_medecin = '$id'");
 	if ($res == false){
     echo 'il y a probleme methode';

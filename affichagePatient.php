@@ -1,19 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Affichage patients
+</title>
+</head>
+<body>
+
 <?php
 
 require 'connect.php';
- 
+require 'menu.php'; 
 
 $res = $linkpdo->query("
-SELECT p.civilite, p.nom, p.prenom, p.ville, p.codePostal, p.adresse, p.dateNaissance, p.lieuNaissance, p.numSecuriteSociale, m.nom, m.prenom
-FROM patient p, medecin m
-WHERE p.id_medecin = m.id_medecin
-
+SELECT civilite, nom, prenom, ville, codePostal, adresse, dateNaissance, lieuNaissance, numSecuriteSociale, id_medecin, id_patient
+FROM patient
 ");
 if ($res == false){
     echo 'il y a probleme methode query';
 }
                     ///Affichage des entrées du résultat une à une
-                    echo '<table>
+                    echo '<table border = 1>
                                 <tr>
 										<th>civilite</th>
                                         <th>nom</th>
@@ -28,18 +35,39 @@ if ($res == false){
 										</tr>';
 
                     while ($data = $res->fetch()) {
+						
                         echo '<tr><td>'.$data[0].'</td><td>'.$data[1].'</td><td>'.
                         $data[2].'</td><td>'.$data[3].'</td><td>'.
                         $data[4].'</td><td>'.$data[5].'</td><td>'.
                         $data[6].'</td><td>'.$data[7].'</td><td>'.
-						$data[8].'</td><td>'.$data[9].' '.$data[10]."</td><td>
-                        <a href='modificationPatient.php?id_patient=$data[0]'>modifier</a> </td><td>
-                        <a href='supprimerPatient.php?id_patient=$data[0]'>supprimer</a> </td></tr>";
-                     }
-                    echo '</table>';
+						$data[8].'</td>';
+						
+						$id_medecin = $data[9];
+						$id_patient = $data[10];
+						
+						
+						$res2 = $linkpdo->query("
+						SELECT nom, prenom FROM medecin WHERE id_medecin = '$id_medecin'
 
+						");
+						if ($res2 == false){
+							echo 'il y a probleme methode query';
+						}
+					echo '<td>';
+					 while ($data = $res2->fetch()) {		
+					 echo $data[0].' '.$data[1];
+						    }
+                    echo "</td>";
+					 $res2->closeCursor();
+					 echo "<td>
+                        <a href='modificationPatient.php?id_patient=$id_patient'>modifier</a> </td><td>
+                        <a href='supprimerPatient.php?id_patient=$id_patient'>supprimer</a> </td></tr>";
+						
+					}
                      ///Fermeture du curseur d'analyse des résultats
                      $res->closeCursor();
+					 echo '</table>';
+					 
 ?>
 
 <form action="saisiePatient.php" method="post">
@@ -48,3 +76,5 @@ if ($res == false){
 
 <p><a href=index.php>Accueil</a></p>
 
+</body>
+</html>

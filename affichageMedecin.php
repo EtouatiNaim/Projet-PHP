@@ -1,14 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Affichage médecins
+</title>
+</head>
+<body>
+
 <?php
 
 require 'connect.php';
- 
+require 'menu.php'; 
 
 $res = $linkpdo->query("SELECT * FROM medecin");
 if ($res == false){
     echo 'il y a probleme methode query';
 }
                     ///Affichage des entrées du résultat une à une
-                    echo '<table>
+                    echo '<table border = 1>
                                 <tr>
 										<th>civilite</th>
                                         <th>nom</th>
@@ -34,3 +43,5 @@ if ($res == false){
 
 <p><a href=index.php>Accueil</a></p>
 
+</body>
+</html>

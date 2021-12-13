@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Modification patient
+</title>
+</head>
+<body>
+
 <?php
 
 require 'connect.php';
@@ -39,11 +48,13 @@ if ($res == false){
 						$dateNaissance = $_POST['dateNaissance'];
 						$lieuNaissance = $_POST['lieuNaissance'];
 						$numSecuriteSociale = $_POST['numSecuriteSociale'];
+						$id_medecin = $_POST['id_medecin'];
 						$id = $_POST['id_Patient'];
+						
 						
 						$res2 = $linkpdo->exec("UPDATE patient SET nom='$nom', prenom='$prenom',
                                     adresse='$adresse', civilite ='$civilite',  codePostal='$codePostal', ville='$ville',
-                                    dateNaissance='$dateNaissance', lieuNaissance = '$lieuNaissance', numSecuriteSociale = '$numSecuriteSociale' where id_Patient='$id'");
+                                    dateNaissance='$dateNaissance', lieuNaissance = '$lieuNaissance', numSecuriteSociale = '$numSecuriteSociale', id_medecin = '$id_medecin' where id_Patient='$id'");
 									
 						if($res2 == false)
 						{
@@ -71,9 +82,26 @@ if ($res == false){
  <p>Date de naissance : <input type="date" name="dateNaissance" value ="<?php echo $dateNaissance; ?>"/></p>
  <p>Lieu de naissance : <input type="text" name="lieuNaissance" value ="<?php echo $lieuNaissance; ?>"/> </p>
  <p>Numéro de sécurité sociale : <input type="text" name="numSecuriteSociale" value ="<?php echo $numSecuriteSociale; ?>"/></p>
+  <p>Médecin référant : 
+ <?php
+
+ $res = $linkpdo->prepare("SELECT nom, prenom,id_medecin FROM medecin");
+ $res-> execute(array());
+ $data = $res;
+ echo '<select name="id_medecin">';
+ foreach($data as $m){
+ echo '<option value='.$m['id_medecin'].'>'.$m['nom']." ".$m['prenom'].'</option>';
+ }
+ echo "</select>";
+ 
+ ?>
+ </p>
  <p><input type="hidden" name="id_Patient" value="<?php echo $id ?>" /></p>
  
  <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="vider"></p>
 </form>
 
 <p><a href=affichagePatient.php>Retour à la liste des patients</a></p>
+
+</body>
+</html>

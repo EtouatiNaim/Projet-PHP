@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Suppression patient
+</title>
+</head>
+<body>
+
 <?php
 
 require 'connect.php';
@@ -26,5 +35,8 @@ if (isset($_POST['Valider'])) {
 <h2>Voulez-vous supprimer le patient ?</h2>
 <form action="supprimerPatient.php" method="post">
  <p><input type="hidden" name="id_patient" value="<?php echo $id ?>" /></p>
- <p><input type="submit" name="Valider" value="Valider"><input type="reset" name = "Non" value="Non"></p>
+ <p><input type="submit" name="Valider" value="Valider"><input type="button" name = "Non" value="Non" onclick="history.back()"></p>
 </form>
+
+</body>
+</html>

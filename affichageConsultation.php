@@ -1,19 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Affichage consultation
+</title>
+</head>
+<body>
+
 <?php
 
 require 'connect.php';
+require 'menu.php';
+?>
+<form action="affichageConsultation.php" method="post">
+<?php
+ $res = $linkpdo->prepare("SELECT nom,prenom, id_medecin FROM medecin");
+ $res-> execute(array());
+ $data = $res;
+ echo '<select name="id_medecin">';
+ echo '<option disabled selected value>          </option>';
+ foreach($data as $m){
  
+ echo '<option value='.$m['id_medecin'].'>'.$m['nom']." ".$m['prenom'].'</option>';
 
+ }
+ echo "</select>";
+ ?>
+ <input type="submit" name="Filtrer" value="Filtrer">
+</form>
+ 
+ <?php
+if (!isset($_POST['Filtrer']) or (!isset($_POST['id_medecin']))) {
 $res = $linkpdo->query("
-SELECT c.DateRdv, c.HeureRdv, c.dureeConsultation, p.nom, p.prenom, m.nom, m.prenom 
+SELECT c.DateRdv, c.HeureRdv, c.dureeConsultation, p.nom, p.prenom, m.nom, m.prenom, p.id_patient
 FROM consultation c, patient p, medecin m
 where c.id_patient = p.id_patient
 and c.id_medecin = m.id_medecin
-ORDER BY c.DateRdv,c.HeureRdv;");
+ORDER BY c.DateRdv DESC,c.HeureRdv DESC;");
 if ($res == false){
     echo 'il y a probleme methode query';
 }
                     ///Affichage des entrées du résultat une à une
-                    echo '<table>
+                    echo '<table border = 1>
+                                <tr>
+										<th>Nom du patient</th>
+                                        <th>Prénom du patient</th>
+                                        <th>Date du rendez-vous</th>
+                                        <th>Heure du rendez-vous</th>
+                                        <th>Durée de la consultation</th>
+                                        <th>Nom du médecin</th>
+										<th>Prénom du médecin</th>
+										
+										</tr>';
+
+                    while ($data = $res->fetch()) {
+                        echo '<tr><td>'.$data[3].'</td><td>'.$data[4].'</td><td>'.
+                        $data[0].'</td><td>'.$data[1].'</td><td>'.
+                        $data[2].'</td><td>'.$data[5].'</td><td>'.
+                        $data[6]."</td><td> 
+						<a href='modificationConsultation.php?id_patient=$data[7],DateRdv = $data[0], HeureRdv = $data[1]'>modifier</a> </td><td>
+                        <a href='supprimerConsultation.php?id_medecin=$data[7], DateRdv = $data[0], HeureRdv = $data[1]'>supprimer</a> </td></tr>";
+                     }
+                    echo '</table>';
+
+                     ///Fermeture du curseur d'analyse des résultats
+                     $res->closeCursor();
+}
+if (isset($_POST['Filtrer']) && (isset($_POST['id_medecin']))){
+	
+	$id_medecin = $_POST['id_medecin'];
+	
+	$res = $linkpdo->query("
+SELECT c.DateRdv, c.HeureRdv, c.dureeConsultation, p.nom, p.prenom, m.nom, m.prenom 
+FROM consultation c, patient p, medecin m
+where c.id_patient = p.id_patient
+and c.id_medecin = '$id_medecin'
+and c.id_medecin = m.id_medecin
+ORDER BY c.DateRdv DESC,c.HeureRdv DESC;");
+if ($res == false){
+    echo 'il y a probleme methode query';
+}
+                    ///Affichage des entrées du résultat une à une
+                    echo '<table border = 1>
                                 <tr>
 										<th>Nom du patient</th>
                                         <th>Prénom du patient</th>
@@ -35,6 +103,9 @@ if ($res == false){
 
                      ///Fermeture du curseur d'analyse des résultats
                      $res->closeCursor();
+	
+	
+}
 ?>
 
 <form action="saisieConsultation.php" method="post">
@@ -43,3 +114,5 @@ if ($res == false){
 
 <p><a href=index.php>Accueil</a></p>
 
+</body>
+</html>

@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Saisie patient
+</title>
+</head>
+<body>
+
 <h1>Saisie d'un nouvel usager</h1>
 <form action="ajoutPatient.php" method="post">
  <p>Nom du patient : <input type="text" name="nom" /></p>
@@ -12,9 +21,25 @@
  <p>dateNaissance : <input type="date" name="dateNaissance" /></p>
  <p>Lieu de naissance : <input type="text" name="lieuNaissance" /></p>
  <p>Numéro de sécurité sociale : <input type="text" name="numSecuriteSociale" /></p>
- <p>Médecin référant : <input type="text" name="nomMedecin" /></p>
+ <p>Médecin référant : 
+ <?php
+ require 'connect.php';
+ $res = $linkpdo->prepare("SELECT nom,prenom FROM medecin");
+ $res-> execute(array());
+ $data = $res;
+ echo '<select name="nomMedecin">';
+ foreach($data as $m){
+ echo '<option value='.$m['nom'].'>'.$m['nom']." ".$m['prenom'].'</option>';
+ }
+ echo "</select>";
+ 
+ ?>
+ </p>
  
  <p><input type="submit" value="envoyer"><input type="reset" value="vider"></p>
 </form>
 
 <p><a href=affichagePatient.php>Retour à la liste des patients</a></p>
+
+</body>
+</html>

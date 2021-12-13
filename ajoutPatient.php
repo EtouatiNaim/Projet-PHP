@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Ajout patient
+</title>
+</head>
+<body>
+
 <?php
 
 
@@ -83,3 +92,5 @@ header('Location: affichagePatient.php');
  <p><input type="submit" name="Valider" value="Valider"><input type="reset" name = "Annuler" value="Annuler"></p>
 </form>
 
+</body>
+</html>

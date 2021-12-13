@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Saisie médecin
+</title>
+</head>
+<body>
+
 <h1>Saisie d'un nouveau médecin</h1>
 <form action="ajoutMedecin.php" method="post">
  <p>Nom du médecin : <input type="text" name="nom" /></p>
@@ -12,3 +21,6 @@
 </form>
 
 <p><a href=affichageMedecin.php>Retour à la liste des médecins</a></p>
+
+</body>
+</html>

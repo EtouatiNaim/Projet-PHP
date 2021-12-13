@@ -1,3 +1,11 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Ajout médecin
+</title>
+</head>
+<body>
 <?php
 
 require 'connect.php';
@@ -46,3 +54,5 @@ header('Location: affichageMedecin.php');
  <p><input type="submit" name="Valider" value="Valider"><input type="reset" name = "Annuler" value="Annuler"></p>
 </form>
 
+</body>
+</html>
