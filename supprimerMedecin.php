@@ -8,7 +8,8 @@ Suppression médecin
 <body>
 
 <?php
-
+require 'sessionstart.php';
+require 'verifAuth.php';
 require 'connect.php';
  
 if(!isset($_POST['Valider'])){

@@ -8,7 +8,8 @@ Modification medecin
 <body>
 
 <?php
-
+require 'sessionstart.php';
+require 'verifAuth.php';
 require 'connect.php';
  
 if(!isset($_POST['Modifier'])){
@@ -69,7 +70,7 @@ if ($res == false){
  <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="vider"></p>
 </form>
 
-<p><a href=affichagePatient.php>Retour à la liste des médecins</a></p>
+<p><a href=affichageMedecin.php>Retour à la liste des médecins</a></p>
 
 </body>
 </html>

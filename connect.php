@@ -8,6 +8,7 @@ Connexion
 <body>
 
 <?php
+//Page de connexion à notre base de données qu'on réutilise en require à chaque fois qu'on en a besoin
 $server = "localhost" ;
 $login = "root";
 $mdp = "root";

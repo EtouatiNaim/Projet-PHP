@@ -15,12 +15,13 @@
 						
 					$login = $_POST['login'];
 					$password = $_POST['password'];
-				
+					$password = sha1($password);
+					
 					
 						
 					$res = $linkpdo->query("SELECT * FROM compte WHERE login = '$login' and password = '$password' ");
 					if ($res == false){
-					echo "ah non non";
+					echo "erreur";
 					}
 					
  

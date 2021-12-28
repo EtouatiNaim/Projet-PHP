@@ -23,13 +23,17 @@ Saisie patient
  <p>Numéro de sécurité sociale : <input type="text" name="numSecuriteSociale" /></p>
  <p>Médecin référant : 
  <?php
+ //Ajout des pages require
+ require 'sessionstart.php';
+ require 'verifAuth.php';
  require 'connect.php';
- $res = $linkpdo->prepare("SELECT nom,prenom FROM medecin");
+ //Affichage des médecins en select
+ $res = $linkpdo->prepare("SELECT id_medecin,nom,prenom FROM medecin");
  $res-> execute(array());
  $data = $res;
- echo '<select name="nomMedecin">';
+ echo '<select name="id_medecin">';
  foreach($data as $m){
- echo '<option value='.$m['nom'].'>'.$m['nom']." ".$m['prenom'].'</option>';
+ echo '<option value='.$m['id_medecin'].'>'.$m['nom']." ".$m['prenom'].'</option>';
  }
  echo "</select>";
  

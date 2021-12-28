@@ -7,6 +7,11 @@ Saisie médecin
 </head>
 <body>
 
+<?php
+require 'sessionstart.php';
+require 'verifAuth.php';
+?>
+
 <h1>Saisie d'un nouveau médecin</h1>
 <form action="ajoutMedecin.php" method="post">
  <p>Nom du médecin : <input type="text" name="nom" /></p>

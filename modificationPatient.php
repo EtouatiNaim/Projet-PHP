@@ -8,69 +8,69 @@ Modification patient
 <body>
 
 <?php
-
+//Ajout des pages require
+require 'sessionstart.php';
+require 'verifAuth.php';
 require 'connect.php';
- 
+
+//Si l'utilisateur n'a pas validé sa modification on récupère les données du patient qu'on souhaite modifier
 if(!isset($_POST['Modifier'])){
 	$id = $_GET['id_patient'];
 	$res = $linkpdo->query("SELECT * FROM patient WHERE id_Patient = '$id'");
-if ($res == false){
-    echo 'il y a probleme methode query';
+	if ($res == false){
+		echo 'il y a probleme methode query';
+	}
+		
+    while ($data = $res->fetch()) 
+	{
+                       
+		$nom = $data['nom'];
+		$prenom = $data['prenom'];
+		$civilite = $data['civilite'];
+		$adresse = $data['adresse'];
+		$codePostal = $data['codePostal'];
+		$ville = $data['ville'];
+		$dateNaissance = $data['dateNaissance'];
+		$lieuNaissance = $data['lieuNaissance'];
+		$numSecuriteSociale = $data['numSecuriteSociale'];
+					
+					
+
+        ///Fermeture du curseur d'analyse des résultats
+        $res->closeCursor();
+	}
 }
 					
-                    while ($data = $res->fetch()) {
-                       
-					$nom = $data['nom'];
-					$prenom = $data['prenom'];
-					$civilite = $data['civilite'];
-					$adresse = $data['adresse'];
-					$codePostal = $data['codePostal'];
-					$ville = $data['ville'];
-					$dateNaissance = $data['dateNaissance'];
-					$lieuNaissance = $data['lieuNaissance'];
-					$numSecuriteSociale = $data['numSecuriteSociale'];
-					
-					
-
-                     ///Fermeture du curseur d'analyse des résultats
-                     $res->closeCursor();
-					}
-					}
-					
-					
-					if (isset($_POST['Modifier'])) {
-						$nom = $_POST['nom'];
-						$prenom = $_POST['prenom'];
-						$civilite = $_POST['civilite'];
-						$adresse = $_POST['adresse'];
-						$codePostal = $_POST['codePostal'];
-						$ville = $_POST['ville'];
-						$dateNaissance = $_POST['dateNaissance'];
-						$lieuNaissance = $_POST['lieuNaissance'];
-						$numSecuriteSociale = $_POST['numSecuriteSociale'];
-						$id_medecin = $_POST['id_medecin'];
-						$id = $_POST['id_Patient'];
+//Si l'utilisateur modifie les valeurs alors on récupère les valeurs saisies et on met à jour la bdd et on renvoie sur la page des patients				
+if (isset($_POST['Modifier'])) {
+	$nom = $_POST['nom'];
+	$prenom = $_POST['prenom'];
+	$civilite = $_POST['civilite'];
+	$adresse = $_POST['adresse'];
+	$codePostal = $_POST['codePostal'];
+	$ville = $_POST['ville'];
+	$dateNaissance = $_POST['dateNaissance'];
+	$lieuNaissance = $_POST['lieuNaissance'];
+	$numSecuriteSociale = $_POST['numSecuriteSociale'];
+	$id_medecin = $_POST['id_medecin'];
+	$id = $_POST['id_Patient'];
 						
-						
-						$res2 = $linkpdo->exec("UPDATE patient SET nom='$nom', prenom='$prenom',
-                                    adresse='$adresse', civilite ='$civilite',  codePostal='$codePostal', ville='$ville',
-                                    dateNaissance='$dateNaissance', lieuNaissance = '$lieuNaissance', numSecuriteSociale = '$numSecuriteSociale', id_medecin = '$id_medecin' where id_Patient='$id'");
+	$res2 = $linkpdo->exec("UPDATE patient SET nom='$nom', prenom='$prenom',
+                            adresse='$adresse', civilite ='$civilite',  codePostal='$codePostal', ville='$ville',
+                            dateNaissance='$dateNaissance', lieuNaissance = '$lieuNaissance', numSecuriteSociale = '$numSecuriteSociale', id_medecin = '$id_medecin' where id_Patient='$id'");
 									
-						if($res2 == false)
-						{
-							echo 'pb prout';
-						}
+	if($res2 == false)
+	{
+		echo 'Erreur';
+	}
 
-						header('Location: affichagePatient.php');
-						exit();
-					}
+	header('Location: affichagePatient.php');
+	exit();
+}
 
 
-
+//Formulaire de changement de données
 ?>
-
-
-
 <h1>Modification de patient</h1>
 <form action="modificationPatient.php" method="post">
  <p>Nom du patient : <input type="text" name="nom" value ="<?php echo $nom; ?>"/></p>
@@ -84,13 +84,13 @@ if ($res == false){
  <p>Numéro de sécurité sociale : <input type="text" name="numSecuriteSociale" value ="<?php echo $numSecuriteSociale; ?>"/></p>
   <p>Médecin référant : 
  <?php
-
+//Affichage des médecins en select
  $res = $linkpdo->prepare("SELECT nom, prenom,id_medecin FROM medecin");
  $res-> execute(array());
  $data = $res;
  echo '<select name="id_medecin">';
  foreach($data as $m){
- echo '<option value='.$m['id_medecin'].'>'.$m['nom']." ".$m['prenom'].'</option>';
+	echo '<option value='.$m['id_medecin'].'>'.$m['nom']." ".$m['prenom'].'</option>';
  }
  echo "</select>";
  

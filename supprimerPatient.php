@@ -8,25 +8,29 @@ Suppression patient
 <body>
 
 <?php
-
+//Ajout des pages require
+require 'sessionstart.php';
+require 'verifAuth.php';
 require 'connect.php';
- 
+
+//Si on ouvre la page pour la première fois on récupère l'id du patient à supprimer
 if(!isset($_POST['Valider'])){
 	$id = $_GET['id_patient'];
 }
-					
+//Si l'utilisateur valide la suppression on supprime le patient de la bdd et on redirige sur la page des patients			
 if (isset($_POST['Valider'])) {
 						
 	$id = $_POST['id_patient'];				
 	$res = $linkpdo->exec("DELETE FROM patient WHERE id_patient = '$id'");
 	if ($res == false){
-    echo 'il y a probleme methode';
-}
+		echo 'il y a probleme methode';
+	}
 	
 	header('Location: affichagePatient.php');
     exit();
 						
 }
+//On transmet l'id
 ?>
 
 

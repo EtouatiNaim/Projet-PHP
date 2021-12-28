@@ -8,7 +8,8 @@ Affichage médecins
 <body>
 
 <?php
-
+require 'sessionstart.php';
+require 'verifAuth.php';
 require 'connect.php';
 require 'menu.php'; 
 
