@@ -21,33 +21,29 @@
           }
         ?>
         <!--  Affichage des entrées du résultat une à une  -->
-          <div class="Tableau-medecin">
-           <?php
+          <?php
               echo '<table border = 1>
                 <tr>
   		      		  <th>Civilité</th>
                   <th>Nom</th>
                   <th>Prénom</th>
                 </tr>';
-            ?>
-          </div>
-        
-        
-        <?php
-         while ($data = $res->fetch()) {
-            echo '<tr><td>'.$data['civilite'].'</td><td>'.$data['nom'].'</td><td>'.
-            $data['prenom']."</td><td>
-            <a href='modificationMedecin.php?id_medecin=$data[0]'>modifier</a> </td><td>
-            <a href='supprimerMedecin.php?id_medecin=$data[0]'>supprimer</a> </td></tr>";
-         }
-          echo '</table>';
+              while ($data = $res->fetch()) {
+                echo '<tr><td>'.$data['civilite'].'</td><td>'.$data['nom'].'</td><td>'.
+                $data['prenom']."</td><td>
+                <a href='modificationMedecin.php?id_medecin=$data[0]'>modifier</a> </td><td>
+                <a href='supprimerMedecin.php?id_medecin=$data[0]'>supprimer</a> </td></tr>";
+              }
+            
+            echo '</table>';
+          
 
             ///Fermeture du curseur d'analyse des résultats
             $res->closeCursor();
-        ?>
+          ?>
 
           <form action="saisieMedecin.php" method="post">
-             <p><button><input type="submit" name="Ajouter" value="Ajouter"></button>
+             <p><input type="submit" name="Ajouter" value="Ajouter un médecin">
           </form>
       
         <p><a href=index.php> Retour à l'accueil</a></p>
