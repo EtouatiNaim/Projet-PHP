@@ -4,6 +4,7 @@
 <title>
 Statistiques
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 <?php
@@ -129,5 +130,7 @@ if ($res == false)
 <?php
 
 ?>
+
+<?php include 'footer.php'; ?>
 </body>
 </html>

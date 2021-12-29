@@ -4,6 +4,7 @@
 <title>
 Ajout patient
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 
@@ -97,5 +98,6 @@ header('Location: affichagePatient.php');
  <p><input type="submit" name="Valider" value="Valider"><input type="submit" name = "Annuler" value="Annuler"></p>
 </form>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>

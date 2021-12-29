@@ -1,48 +1,50 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>
-Affichage médecins
-</title>
-</head>
-<body>
+    <head>
+        <title>
+            Affichage médecins
+        </title>
+        <link rel="stylesheet" type ="text/css" href="style.css">
+    </head>
+    <body>
 
-<?php
-require 'sessionstart.php';
-require 'verifAuth.php';
-require 'connect.php';
-require 'menu.php'; 
+        <?php
+            require 'sessionstart.php';
+            require 'verifAuth.php';
+            require 'connect.php';
+            require 'menu.php'; 
 
-$res = $linkpdo->query("SELECT * FROM medecin");
-if ($res == false){
-    echo 'il y a probleme methode query';
-}
-                    ///Affichage des entrées du résultat une à une
-                    echo '<table border = 1>
-                                <tr>
-										<th>civilite</th>
-                                        <th>nom</th>
-                                        <th>prenom</th>
-                                        
-										</tr>';
+            $res = $linkpdo->query("SELECT * FROM medecin");
 
-                    while ($data = $res->fetch()) {
-                        echo '<tr><td>'.$data['civilite'].'</td><td>'.$data['nom'].'</td><td>'.
-                        $data['prenom']."</td><td>
-                        <a href='modificationMedecin.php?id_medecin=$data[0]'>modifier</a> </td><td>
-                        <a href='supprimerMedecin.php?id_medecin=$data[0]'>supprimer</a> </td></tr>";
-                     }
-                    echo '</table>';
+          if ($res == false){
+              echo 'il y a probleme methode query';
+          }
+          ///Affichage des entrées du résultat une à une
+           echo '<table border = 1>
+               <tr>
+		      		<th>civilite</th>
+                   <th>nom</th>
+                    <th>prenom</th>
+                 </tr>';
+        
 
-                     ///Fermeture du curseur d'analyse des résultats
-                     $res->closeCursor();
-?>
+         while ($data = $res->fetch()) {
+            echo '<tr><td>'.$data['civilite'].'</td><td>'.$data['nom'].'</td><td>'.
+            $data['prenom']."</td><td>
+            <a href='modificationMedecin.php?id_medecin=$data[0]'>modifier</a> </td><td>
+            <a href='supprimerMedecin.php?id_medecin=$data[0]'>supprimer</a> </td></tr>";
+         }
+          echo '</table>';
 
-<form action="saisieMedecin.php" method="post">
- <p><input type="submit" name="Ajouter" value="Ajouter">
-</form>
+            ///Fermeture du curseur d'analyse des résultats
+            $res->closeCursor();
+        ?>
 
-<p><a href=index.php>Accueil</a></p>
+        <form action="saisieMedecin.php" method="post">
+            <p><input type="submit" name="Ajouter" value="Ajouter">
+        </form>
 
-</body>
+        <p><a href=index.php>Accueil</a></p>
+        <?php include 'footer.php'; ?>
+    </body>
 </html>

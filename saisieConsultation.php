@@ -4,6 +4,7 @@
 <title>
 Saisie consultation
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 <?php //Ajout des pages require
@@ -51,5 +52,6 @@ require 'connect.php';
 
 <p><a href=affichageConsultation.php>Retour à la liste des consultations</a></p>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>

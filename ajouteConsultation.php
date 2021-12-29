@@ -4,6 +4,7 @@
 <title>
 Ajout consultation
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 <?php
@@ -116,6 +117,8 @@ if(isset ($_POST['Valider'])){
 <p><input type="hidden" name="id_medecin" value="<?php echo $id_medecin ?>" /></p>
  <p><input type="submit" name="Valider" value="Valider"><input type="submit" name = "Annuler" value="Annuler"></p>
 </form>
+
+<?php include 'footer.php'; ?>
 
 </body>
 </html>

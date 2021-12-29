@@ -4,6 +4,7 @@
 <title>
 Saisie médecin
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 
@@ -27,5 +28,6 @@ require 'verifAuth.php';
 
 <p><a href=affichageMedecin.php>Retour à la liste des médecins</a></p>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>

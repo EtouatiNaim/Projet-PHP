@@ -4,15 +4,20 @@
 		<title>
 			Accueil
 		</title>
+		<link rel="stylesheet" type ="text/css" href="style.css">
 	</head>
+
 	<body>
 	<?php
-
 	require 'sessionstart.php';
-	require 'menu.php';
 	?>
-	<h1>Cc c l'accueil : )</h1>
 
+		<div class="accueil">
+			<h1>Accueil</h1>
+		</div>
 
+	<?php require 'menu.php';?>
+	<?php include 'footer.php'; ?>
 	</body>
+	
 </html>

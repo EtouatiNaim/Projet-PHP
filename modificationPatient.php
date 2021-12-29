@@ -4,6 +4,7 @@
 <title>
 Modification patient
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 
@@ -103,5 +104,6 @@ if (isset($_POST['Modifier'])) {
 
 <p><a href=affichagePatient.php>Retour à la liste des patients</a></p>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>

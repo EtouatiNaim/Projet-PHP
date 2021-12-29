@@ -4,6 +4,7 @@
 <title>
 Affichage patients
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 
@@ -80,5 +81,6 @@ echo '</table>';
 
 <p><a href=index.php>Accueil</a></p>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>

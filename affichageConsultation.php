@@ -4,6 +4,7 @@
 <title>
 Affichage consultation
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 
@@ -119,5 +120,6 @@ if (isset($_POST['Filtrer']) && (isset($_POST['id_medecin']))){
 
 <p><a href=index.php>Accueil</a></p>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>

@@ -4,6 +4,7 @@
 <title>
 Connexion
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 
@@ -23,5 +24,6 @@ $db = "projetphp";
  }
  ?>
  
+
  </body>
 </html>

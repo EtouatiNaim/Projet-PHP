@@ -4,6 +4,7 @@
 <title>
 Modification consultation
 </title>
+<link rel="stylesheet" type ="text/css" href="style.css">
 </head>
 <body>
 
@@ -187,6 +188,6 @@ $res = $linkpdo->prepare("SELECT id_medecin,nom,prenom FROM medecin");
 </form>
 
 <p><a href=affichageConsultation.php>Retour à la liste des consultations</a></p>
-
+<?php include 'footer.php'; ?>
 </body>
 </html>
