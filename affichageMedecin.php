@@ -19,15 +19,21 @@
           if ($res == false){
               echo 'il y a probleme methode query';
           }
-          ///Affichage des entrées du résultat une à une
-           echo '<table border = 1>
-               <tr>
-		      		<th>civilite</th>
-                   <th>nom</th>
-                    <th>prenom</th>
-                 </tr>';
+        ?>
+        <!--  Affichage des entrées du résultat une à une  -->
+          <div class="Tableau-medecin">
+           <?php
+              echo '<table border = 1>
+                <tr>
+  		      		  <th>Civilité</th>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                </tr>';
+            ?>
+          </div>
         
-
+        
+        <?php
          while ($data = $res->fetch()) {
             echo '<tr><td>'.$data['civilite'].'</td><td>'.$data['nom'].'</td><td>'.
             $data['prenom']."</td><td>
@@ -40,11 +46,11 @@
             $res->closeCursor();
         ?>
 
-        <form action="saisieMedecin.php" method="post">
-            <p><input type="submit" name="Ajouter" value="Ajouter">
-        </form>
-
-        <p><a href=index.php>Accueil</a></p>
+          <form action="saisieMedecin.php" method="post">
+             <p><button><input type="submit" name="Ajouter" value="Ajouter"></button>
+          </form>
+      
+        <p><a href=index.php> Retour à l'accueil</a></p>
         <?php include 'footer.php'; ?>
     </body>
 </html>

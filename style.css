@@ -25,7 +25,7 @@ footer {
     flex-shrink: 0;
     border-top: 1px dashed #000;
     width: 100%;
-    background: #fff;
+    background: #b2b2b2;
     color: #333;
 }
 .content-footer {
@@ -57,8 +57,6 @@ footer {
 }
 
 /* Services */
-
-
 .services-list,
 .schedule-list,
 .media-list {
@@ -127,3 +125,18 @@ footer {
         padding-bottom: 5px;
     }
 
+
+/* PAGE CONSULTATION MEDECIN*/
+button {
+  padding: 20px 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 0px;
+  background: transparent;
+  position: relative;
+  transition: all .2s;
+  overflow: hidden;
+  color: #fff;
+  border-radius: 30px;
+  box-shadow: 0px -0px 0px 0px rgba(143, 64,   248, .5), 0px 0px 0px 0px rgba(39, 200, 255, .5);
+}
