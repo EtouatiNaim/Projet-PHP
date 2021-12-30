@@ -3,10 +3,7 @@
 if(!isset ($_SESSION['login'])) {				
 	header('Location: auth.php');
 	exit();
-}
-				
-				
-					
+}			
 ?>
 				
 				

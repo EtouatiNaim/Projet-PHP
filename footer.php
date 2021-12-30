@@ -1,41 +1,42 @@
-<footer>
-      <div class="content-footer">
-        <div class="bloc footer-services">
-          <h3>Nos Services</h3>
-          <ul class="services-list">
-            <li><a >Chirurgie Dentaire</a></li>
-            <li><a >Consultation</a></li>
-            <li><a >Médecine du sport</a></li>
-            <li><a >Service Diététique</a></li>
+  <footer class="footer">
+     <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>Notre Cabinet Medical</h4>
+          <ul>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">our services</a></li>
+            <li><a href="#">privacy policy</a></li>
           </ul>
         </div>
-
-        <div class="bloc footer-contact">
-          <h3>Contact</h3>
-          <p>06-55-55-55-55</p>
-          <p>supportclient@contact.com</p>
-          <p>6 Rue invention, 31000, Toulouse</p>
-        </div>
-
-        <div class="bloc footer-schedule">
-          <h3>Nos horaires</h3>
-          <ul class="schedule-list">
-            <li>✔️ Lun 10-19</li>
-            <li>✔️ Mar 10-19</li>
-            <li>✔️ Mer 10-19</li>
-            <li>✔️ Jeu 10-19</li>
-            <li>✔️ Ven 10-19</li>
-            <li>❌ Sam fermé</li>
-            <li>❌ Dim fermé</li>
+        <div class="footer-col">
+          <h4> Plus d'informations:</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">shipping</a></li>
+            <li><a href="#">returns</a></li>
+            <li><a href="#">order status</a></li>
+            <li><a href="#">payment options</a></li>
           </ul>
         </div>
-
-        <div class="bloc footer-medias">
-          <h3>Nos réseaux</h3>
-          <ul class="media-list">
-			<p><a href="https://fr-fr.facebook.com/">Facebook</a></p>
-			<p><a href="https://github.com/EtouatiNaim"> GitHub</a></p>                
+        <div class="footer-col">
+          <h4>Nos Produits</h4>
+          <ul>
+            <li><a href="#">watch</a></li>
+            <li><a href="#">bag</a></li>
+            <li><a href="#">shoes</a></li>
+            <li><a href="#">dress</a></li>
           </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Nous contacter</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
       </div>
-    </footer>
+     </div>
+  </footer>
