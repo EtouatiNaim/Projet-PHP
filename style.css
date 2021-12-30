@@ -11,10 +11,9 @@ body{
     flex-direction: column;
 }
 
-
 .accueil{
 	margin-top: 10px;
-	color: #ffffff;
+	color: black;
 	text-transform: uppercase;
 	transition: all 4s ease-in-out;
 }
@@ -86,6 +85,7 @@ ul{
     color: #ffffff;
     padding-left: 8px;
 }
+
 
 .footer-col .social-links a{
     display: inline-block;
@@ -166,5 +166,25 @@ tbody tr:nth-child(even){
   th, td {
     padding: 10px 7px;
 }
+
+}
+
+/* page affichage medecin */ 
+.Affichage-medecin{
+    border-collapse: collapse;
+    cursor: pointer;
+    margin-top:10px ;
+    margin-bottom:10px ;
+    width: 200%;
+    font-size: 15px;
+}
+input {
+    background-color: #2a5265;
+    border: none;
+    color: white;
+    padding: 5px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    
 
 }

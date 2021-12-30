@@ -8,6 +8,9 @@
         <link rel="stylesheet" type ="text/css" href="style.css">
     </head>
     <body>
+        <div class="accueil">
+            <h1>Statistique</h1>
+        </div>
         <?php
             //Ajout des pages require
             require 'sessionstart.php';
@@ -94,7 +97,6 @@
             ?>
             </tr>
         </table>
-        <p><a href=index.php>Accueil</a></p>
         <?php
         //Récupère la somme des durées de consultations des médecins en secondes
         $res = $linkpdo->query("

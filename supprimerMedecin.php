@@ -32,11 +32,11 @@
 			}
 		?>
 
-		<h1>Suppression de l'utilisateur</h1>
-		<h2>Voulez-vous supprimer le médecin ?</h2>
+		<h1>Suppression</h1>
+		<h2>Voulez-vous vraiment supprimer ce médecin ?</h2>
 		<form action="supprimerMedecin.php" method="post">
 		 <p><input type="hidden" name="id_medecin" value="<?php echo $id ?>" /></p>
-		 <p><input type="submit" name="Valider" value="Valider"><input type="button" name = "Non" value="Non" onclick="history.back()"></p>
+		 <p><input type="submit" name="Valider" value="Valider"><input type="button" name = "Non" value="Annuler" onclick="history.back()"></p>
 		</form>
 
 		<?php include 'footer.php'; ?>

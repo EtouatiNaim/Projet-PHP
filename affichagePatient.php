@@ -8,7 +8,9 @@
 		<link rel="stylesheet" type ="text/css" href="style.css">
 	</head>
 	<body>
-
+		<div class="accueil">
+			<h1>Liste des patients</h1>
+		</div>
 		<?php
 		//Ajout des pages require
 		require 'sessionstart.php';
