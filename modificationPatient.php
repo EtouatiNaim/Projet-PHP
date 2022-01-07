@@ -1,73 +1,75 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>
-Modification patient
-</title>
-<link rel="stylesheet" type ="text/css" href="style.css">
-</head>
-<body>
+	<head>
+	<title>
+	Modification patient
+	</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" type ="text/css" href="style.css">
+	</head>
+	<body>
 
-<?php
-//Ajout des pages require
-require 'sessionstart.php';
-require 'verifAuth.php';
-require 'connect.php';
+		<?php
+			//Ajout des pages require
+			require 'sessionstart.php';
+			require 'verifAuth.php';
+			require 'connect.php';
 
-//Si l'utilisateur n'a pas validé sa modification on récupère les données du patient qu'on souhaite modifier
-if(!isset($_POST['Modifier'])){
-	$id = $_GET['id_patient'];
-	$res = $linkpdo->query("SELECT * FROM patient WHERE id_Patient = '$id'");
-	if ($res == false){
-		echo 'il y a probleme methode query';
-	}
-		
-    while ($data = $res->fetch()) 
-	{
-                       
-		$nom = $data['nom'];
-		$prenom = $data['prenom'];
-		$civilite = $data['civilite'];
-		$adresse = $data['adresse'];
-		$codePostal = $data['codePostal'];
-		$ville = $data['ville'];
-		$dateNaissance = $data['dateNaissance'];
-		$lieuNaissance = $data['lieuNaissance'];
-		$numSecuriteSociale = $data['numSecuriteSociale'];
+			//Si l'utilisateur n'a pas validé sa modification on récupère les données du patient qu'on souhaite modifier
+			if(!isset($_POST['Modifier'])){
+				$id = $_GET['id_patient'];
+				$res = $linkpdo->query("SELECT * FROM patient WHERE id_Patient = '$id'");
+				if ($res == false){
+					echo 'il y a probleme methode query';
+				}
 					
-					
+			    while ($data = $res->fetch()) 
+				{
+			                       
+					$nom = $data['nom'];
+					$prenom = $data['prenom'];
+					$civilite = $data['civilite'];
+					$adresse = $data['adresse'];
+					$codePostal = $data['codePostal'];
+					$ville = $data['ville'];
+					$dateNaissance = $data['dateNaissance'];
+					$lieuNaissance = $data['lieuNaissance'];
+					$numSecuriteSociale = $data['numSecuriteSociale'];
+								
+								
 
-        ///Fermeture du curseur d'analyse des résultats
-        $res->closeCursor();
-	}
-}
-					
-//Si l'utilisateur modifie les valeurs alors on récupère les valeurs saisies et on met à jour la bdd et on renvoie sur la page des patients				
-if (isset($_POST['Modifier'])) {
-	$nom = $_POST['nom'];
-	$prenom = $_POST['prenom'];
-	$civilite = $_POST['civilite'];
-	$adresse = $_POST['adresse'];
-	$codePostal = $_POST['codePostal'];
-	$ville = $_POST['ville'];
-	$dateNaissance = $_POST['dateNaissance'];
-	$lieuNaissance = $_POST['lieuNaissance'];
-	$numSecuriteSociale = $_POST['numSecuriteSociale'];
-	$id_medecin = $_POST['id_medecin'];
-	$id = $_POST['id_Patient'];
-						
-	$res2 = $linkpdo->exec("UPDATE patient SET nom='$nom', prenom='$prenom',
-                            adresse='$adresse', civilite ='$civilite',  codePostal='$codePostal', ville='$ville',
-                            dateNaissance='$dateNaissance', lieuNaissance = '$lieuNaissance', numSecuriteSociale = '$numSecuriteSociale', id_medecin = '$id_medecin' where id_Patient='$id'");
+			        ///Fermeture du curseur d'analyse des résultats
+			        $res->closeCursor();
+				}
+			}
+								
+			//Si l'utilisateur modifie les valeurs alors on récupère les valeurs saisies et on met à jour la bdd et on renvoie sur la page des patients				
+			if (isset($_POST['Modifier'])) {
+				$nom = $_POST['nom'];
+				$prenom = $_POST['prenom'];
+				$civilite = $_POST['civilite'];
+				$adresse = $_POST['adresse'];
+				$codePostal = $_POST['codePostal'];
+				$ville = $_POST['ville'];
+				$dateNaissance = $_POST['dateNaissance'];
+				$lieuNaissance = $_POST['lieuNaissance'];
+				$numSecuriteSociale = $_POST['numSecuriteSociale'];
+				$id_medecin = $_POST['id_medecin'];
+				$id = $_POST['id_Patient'];
 									
-	if($res2 == false)
-	{
-		echo 'Erreur';
-	}
+				$res2 = $linkpdo->exec("UPDATE patient SET nom='$nom', prenom='$prenom',
+			                            adresse='$adresse', civilite ='$civilite',  codePostal='$codePostal', ville='$ville',
+			                            dateNaissance='$dateNaissance', lieuNaissance = '$lieuNaissance', numSecuriteSociale = '$numSecuriteSociale', id_medecin = '$id_medecin' where id_Patient='$id'");
+												
+				if($res2 == false)
+				{
+					echo 'Erreur';
+				}
 
-	header('Location: affichagePatient.php');
-	exit();
-}
+				header('Location: affichagePatient.php');
+				exit();
+			}
+
 
 
 //Formulaire de changement de données
@@ -105,8 +107,9 @@ if (isset($_POST['Modifier'])) {
  <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="Vider"></p>
 </form>
 
-<p><a href=affichagePatient.php>Retour à la liste des patients</a></p>
 
-<?php include 'footer.php'; ?>
-</body>
+		<p><a href=affichagePatient.php>Retour à la liste des patients</a></p>
+
+		<?php include 'footer.php'; ?>
+	</body>
 </html>
