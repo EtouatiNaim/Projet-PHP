@@ -62,13 +62,15 @@ if ($res == false){
 
 <h1>Modification de médecin</h1>
 <form action="modificationPatient.php" method="post">
- <p>Nom du patient : <input type="text" name="nom" value ="<?php echo $nom; ?>"/></p>
- <p>Prénom du patient : <input type="text" name="prenom" value ="<?php echo $prenom; ?>"/></p>
- <p>Civilité du patient : <input type="text" name="civilite" value ="<?php echo $civilite; ?>"/> </p>
-
+ <p>Nom du médecin : <input type="text" name="nom" value ="<?php echo $nom; ?>"/></p>
+ <p>Prénom du médecin : <input type="text" name="prenom" value ="<?php echo $prenom; ?>"/></p>
+  <p>Civilité du médecin : <select name="civilite">
+<option value= M.> Monsieur </option>
+<option value= Mme.> Madame </option>
+</select></p>
  <p><input type="hidden" name="id_medecin" value="<?php echo $id ?>" /></p>
  
- <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="vider"></p>
+ <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="Vider"></p>
 </form>
 
 <p><a href=affichageMedecin.php>Retour à la liste des médecins</a></p>

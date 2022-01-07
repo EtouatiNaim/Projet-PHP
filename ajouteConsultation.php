@@ -73,22 +73,22 @@ if(isset ($_POST['Valider'])){
 		$id_medecin_interdit = $data['id_medecin'];
 	}
 	//On recherche les consultations du médecin à la même date
-	$res = $linkpdo->query("SELECT * FROM consultation WHERE id_medecin = '$id_medecin' and DateRdv = '$DateRdv'
+	$res = $linkpdo->query("SELECT * FROM consultation WHERE id_medecin = '$id_medecin' and DateRdv = '$DateRdv' and '$HeureRdv' between HeureRdv and addtime(HeureRdv,dureeConsultation)
+                                        or addtime('$HeureRdv','$dureeConsultation') between HeureRdv and addtime(HeureRdv,dureeConsultation)
 	");
 
-    $bool = false;
+    
 	
 	//On vérifie qu'il n'y a pas de chevauchement de consultations en fonction de leur durée
+
 	while ($data = $res->fetch()) {
-		if(strtotime($HeureRdv) - strtotime($data['dureeConsultation']) < strtotime($data['HeureRdv']) ||  strtotime($data['HeureRdv']) - strtotime($dureeConsultation) < strtotime($HeureRdv))
-		{	 
-			$bool = true;
-		}
+		
+	$id_medecin_interdit_chevauchement = $data['id_medecin'];
 
    }
 	
 	//Si il n'y a aucun chevauchement par heure exacte ou par durée de consultation, on crée la consultation dans la base de données
-	if (!isset($id_medecin_interdit) && $bool == false) {
+	if (!isset($id_medecin_interdit_meme_horaire) && !isset($id_medecin_interdit_chevauchement)) {		
 		$SqlQuery = "INSERT INTO consultation (id_patient, DateRdv, HeureRdv, dureeConsultation, id_medecin)
 		VALUES ('$id_patient', '$DateRdv', '$HeureRdv', '$dureeConsultation', '$id_medecin')";
 

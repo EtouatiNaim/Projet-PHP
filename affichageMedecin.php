@@ -23,17 +23,13 @@
         <!--  Affichage des entrées du résultat une à une  -->
           <div class="Tableau-medecin">
            <?php
-              echo '<table border = 1>
+              echo '<table>
                 <tr>
   		      		  <th>Civilité</th>
                   <th>Nom</th>
                   <th>Prénom</th>
                 </tr>';
-            ?>
-          </div>
-        
-        
-        <?php
+            
          while ($data = $res->fetch()) {
             echo '<tr><td>'.$data['civilite'].'</td><td>'.$data['nom'].'</td><td>'.
             $data['prenom']."</td><td>
@@ -41,6 +37,9 @@
             <a href='supprimerMedecin.php?id_medecin=$data[0]'>supprimer</a> </td></tr>";
          }
           echo '</table>';
+		  ?>
+		   </div>
+		  <?php
 
             ///Fermeture du curseur d'analyse des résultats
             $res->closeCursor();

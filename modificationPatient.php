@@ -76,7 +76,10 @@ if (isset($_POST['Modifier'])) {
 <form action="modificationPatient.php" method="post">
  <p>Nom du patient : <input type="text" name="nom" value ="<?php echo $nom; ?>"/></p>
  <p>Prénom du patient : <input type="text" name="prenom" value ="<?php echo $prenom; ?>"/></p>
- <p>Civilité du patient : <input type="text" name="civilite" value ="<?php echo $civilite; ?>"/> </p>
+  <p>Civilité du patient : <select name="civilite">
+<option value= M.> Monsieur </option>
+<option value= Mme.> Madame </option>
+</select></p>
  <p>Code postal : <input type="text" name="codePostal" value ="<?php echo $codePostal; ?>"/></p>
  <p>Ville : <input type="text" name="ville" value ="<?php echo $ville; ?>"/></p>
  <p>Adresse : <input type="text" name="adresse" value ="<?php echo $adresse; ?>"/> </p>
@@ -99,7 +102,7 @@ if (isset($_POST['Modifier'])) {
  </p>
  <p><input type="hidden" name="id_Patient" value="<?php echo $id ?>" /></p>
  
- <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="vider"></p>
+ <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="Vider"></p>
 </form>
 
 <p><a href=affichagePatient.php>Retour à la liste des patients</a></p>

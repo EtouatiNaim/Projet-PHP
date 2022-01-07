@@ -9,6 +9,7 @@ Modification consultation
 <body>
 
 <?php
+date_default_timezone_set('UTC');
 //On ajoute les pages require
 require 'sessionstart.php';
 require 'verifAuth.php';
@@ -33,6 +34,8 @@ if(!isset($_POST['Modifier'])){
 		///Fermeture du curseur d'analyse des résultats
         $res->closeCursor();
 	}
+	
+	$id_patient = $old_id_patient;
 	//On récupère le nom et prénom du patient avec son id			
 	$res = $linkpdo->query("SELECT nom, prenom FROM patient WHERE id_patient = '$old_id_patient'");
 	if ($res == false){
@@ -63,11 +66,16 @@ if(!isset($_POST['Modifier'])){
 					
 if (isset($_POST['Modifier'])) {
 						
-	$id_medecin = $_POST['id_medecin'];					
-	$id_patient = $_POST['id_patient'];					
+	$id_medecin = $_POST['id_medecin'];
+
+	$id_patient = $_POST['id_patient'];	
+	
 	$DateRdv = $_POST['DateRdv'];
+
 	$HeureRdv = $_POST['HeureRdv'];
+
 	$dureeConsultation = $_POST['dureeConsultation'];
+
 						
 	$old_id_patient = $_POST['old_id_patient'];
 	$old_DateRdv = $_POST['old_DateRdv'];
@@ -78,25 +86,25 @@ if (isset($_POST['Modifier'])) {
 	");
 	//Si il existe, on stocke son id
 	while ($data = $res->fetch()) {
-		$id_medecin_interdit = $data['id_medecin'];
+		$id_medecin_interdit_meme_horaire = $data['id_medecin'];
 	}
 	//On recherche les consultations du médecin à la même date
-	$res = $linkpdo->query("SELECT * FROM consultation WHERE id_medecin = '$id_medecin' and DateRdv = '$DateRdv'
+	$res = $linkpdo->query("SELECT * FROM consultation WHERE id_medecin = '$id_medecin' and DateRdv = '$DateRdv' and '$HeureRdv' between HeureRdv and addtime(HeureRdv,dureeConsultation)
+                                        or addtime('$HeureRdv','$dureeConsultation') between HeureRdv and addtime(HeureRdv,dureeConsultation)
 	");
 
-    $bool = false;
+    
 	
 	//On vérifie qu'il n'y a pas de chevauchement de consultations en fonction de leur durée
+
 	while ($data = $res->fetch()) {
-		if(strtotime($HeureRdv) - strtotime($data['dureeConsultation']) < strtotime($data['HeureRdv']) ||  strtotime($data['HeureRdv']) - strtotime($dureeConsultation) < strtotime($HeureRdv))
-		{	 
-			$bool = true;
-		}
+		
+	$id_medecin_interdit_chevauchement = $data['id_medecin'];
 
    }
 	
 	//Si il n'y a aucun chevauchement par heure exacte ou par durée de consultation, on crée la consultation dans la base de données
-	if (!isset($id_medecin_interdit) && $bool == false) {					
+	if (!isset($id_medecin_interdit_meme_horaire) && !isset($id_medecin_interdit_chevauchement)) {					
 		
 		$res2 = $linkpdo->exec("UPDATE consultation SET id_patient='$id_patient', DateRdv='$DateRdv',
                            HeureRdv ='$HeureRdv', id_medecin = '$id_medecin', dureeConsultation = '$dureeConsultation' where id_patient = '$old_id_patient' and DateRdv = '$old_DateRdv' and HeureRdv = '$old_HeureRdv'");
@@ -116,7 +124,6 @@ if (isset($_POST['Modifier'])) {
 }
 
 
-
 ?>
 
 
@@ -131,7 +138,7 @@ if (isset($_POST['Modifier'])) {
  $data = $res;
  echo '<select name="id_patient">';
  foreach($data as $p){
-  if( $p['nom'] == $nomPatient && $p['prenom'] == $prenomPatient)
+  if( $p['id_patient'] == $id_patient)
  {
 
  echo "<option value='".$p['id_patient']."'selected";
@@ -161,7 +168,7 @@ $res = $linkpdo->prepare("SELECT id_medecin,nom,prenom FROM medecin");
  foreach($data as $m){
 	
 
- if( $m['nom'] == $nomMedecin && $m['prenom'] == $prenomMedecin)
+ if( $m['id_medecin'] == $id_medecin)
  {
 
  echo "<option value='".$m['id_medecin']."'selected";
@@ -183,6 +190,8 @@ $res = $linkpdo->prepare("SELECT id_medecin,nom,prenom FROM medecin");
  <p><input type="hidden" name="old_id_patient" value="<?php echo $old_id_patient ?>" /></p>
   <p><input type="hidden" name="old_DateRdv" value="<?php echo $old_DateRdv ?>" /></p>
    <p><input type="hidden" name="old_HeureRdv" value="<?php echo $old_HeureRdv ?>" /></p>
+ 
+		
  
  <p><input type="submit" name="Modifier" value="Modifier"><input type="reset" value="vider"></p>
 </form>

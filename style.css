@@ -1,19 +1,19 @@
 body{
-	margin: 0;
-	padding: 0;
-	text-align: center;
-	background: :linear-gradient(rgba(0,0,50,0.5), rgba(0,0,50,0.5));
-	background-image: url(medecin.jpg);
-	background-size: cover;
-	background-position: no-repeat center fixed;
-	font-family: sans-serif;
-	display: flex;
-	flex-direction: column;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: :linear-gradient(rgba(0,0,50,0.5), rgba(0,0,50,0.5));
+    background-image: url(medecin.jpg);
+    background-size: cover;
+    background-position: no-repeat center fixed;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .accueil{
-	margin-top: 100px;
-	color: #ffffff;
+	margin-top: 10px;
+	color: black;
 	text-transform: uppercase;
 	transition: all 4s ease-in-out;
 }
@@ -21,122 +21,170 @@ body{
 	font-size: 50px;
 }
 
-footer {
-    flex-shrink: 0;
-    border-top: 1px dashed #000;
-    width: 100%;
-    background: #b2b2b2;
-    color: #333;
+
+.container{
+    max-width: 1170px;
+    margin:auto;
 }
-.content-footer {
-    max-width: 1000px;
-    margin: 0 auto;
+
+.row{
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    font-size: 16px;
-    padding: 50px 0 100px;
+    flex-wrap: wrap;
 }
 
-.bloc {
-    flex-basis: 20%;
-    margin: 0 30px;
+ul{
+    list-style: none;
 }
 
-/* contact */
-.footer-contact h3,
-.footer-services h3,
-.footer-schedule h3,
-.footer-medias h3 {
-    font-size: 22px;
-    padding-bottom: 20px;
+.footer{
+    background-color: #24262b;
+    padding: 70px 0;
 }
 
-.footer-contact p {
-    padding: 5px 0;
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
 }
 
-/* Services */
-.services-list,
-.schedule-list,
-.media-list {
-    list-style-type: none;
-}
-.services-list li {
-    padding: 2px 0;
-}
-.services-list a {
-    text-decoration: none;
-    color: #333;
-}
-.services-list a:hover {
-    color: rgb(3,3,3);
-}
-
-
-/* réseaux */
-
-.media-list {
+.footer-col h4{
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
     position: relative;
-    right: 10px;
 }
-.media-list svg {
-    width: 30px;
-    margin: 10px 10px;
+
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left:0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
 }
-.media-list a {
+
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
     text-decoration: none;
-    color: #333;
-    display: flex;
-    align-items: center;
-    font-size: 20px;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover{
+    color: #ffffff;
+    padding-left: 8px;
 }
 
 
-/* Media queries */
+.footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin:0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
 
-@media screen and (max-width: 1000px) {
-
-    .content-footer {
-        max-width: 100%;
-        flex-wrap: wrap;
-    }
-    .bloc {
-        flex-basis: auto;
-        margin: 20px 20px;
-    }
-
+.footer-col .social-links a:hover{
+    color: #24262b;
+    background-color: #ffffff;
 }
 
 
-@media screen and (max-width: 600px) {
-    .content-footer {
-        justify-content: center;
-        padding-top: 30px;
+
+/*responsive et tableau*/
+@media(max-width: 767px){
+  .footer-col{
+        width: 50%;
+     margin-bottom: 30px;
+    }  
+}
+@media(max-width: 574px){
+  .footer-col{
+        width: 100%;
     }
-    .bloc {
-        flex-basis: 70%;
-     
-    }
-    .footer-contact h3,
-    .footer-services h3,
-    .footer-schedule h3,
-    .footer-medias h3 {
-        padding-bottom: 5px;
-    }
+}
 
 
-/* PAGE CONSULTATION MEDECIN*/
-button {
-  padding: 20px 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  border: 0px;
-  background: transparent;
-  position: relative;
-  transition: all .2s;
-  overflow: hidden;
-  color: #fff;
-  border-radius: 30px;
-  box-shadow: 0px -0px 0px 0px rgba(143, 64,   248, .5), 0px 0px 0px 0px rgba(39, 200, 255, .5);
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+}
+
+.table-style  {
+    border-collapse: collapse;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+    cursor: pointer;
+    margin: 0px auto;
+    border: 2px solid black;
+}
+
+thead tr {
+    background-color: #486b7b;
+    color: #fff;
+    text-align: left;
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: center;
+}
+
+tbody tr, td, th {
+    border: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even){
+    background-color: #d3d3d3;
+}
+
+@media screen and (max-width: 550px) {
+  body {
+    align-items: flex-start;
+  }
+  .table-style  {
+    width: 100%;
+    margin: 0px;
+    font-size: 10px;
+  }
+  th, td {
+    padding: 10px 7px;
+}
+
+}
+
+/* page affichage medecin */ 
+.Affichage-medecin{
+    border-collapse: collapse;
+    cursor: pointer;
+    margin-top:10px ;
+    margin-bottom:10px ;
+    width: 200%;
+    font-size: 15px;
+}
+input {
+    background-color: #2a5265;
+    border: none;
+    color: white;
+    padding: 5px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    
+
 }
