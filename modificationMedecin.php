@@ -53,7 +53,7 @@
 
 
 <h1>Modification de médecin</h1>
-<form action="modificationPatient.php" method="post">
+<form action="modificationMedecin.php" method="post">
  <p>Nom du médecin : <input type="text" name="nom" value ="<?php echo $nom; ?>"/></p>
  <p>Prénom du médecin : <input type="text" name="prenom" value ="<?php echo $prenom; ?>"/></p>
   <p>Civilité du médecin : <select name="civilite">
