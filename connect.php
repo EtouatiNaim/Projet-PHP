@@ -11,10 +11,10 @@
 
 		<?php
 			//Page de connexion à notre base de données qu'on réutilise en require à chaque fois qu'on en a besoin
-			$server = "localhost" ;
-			$login = "root";
-			$mdp = "root";
-			$db = "projetphp";
+			$server = "eu-cdbr-west-02.cleardb.net" ;
+			$login = "bda3043ef7e5a1";
+			$mdp = "ce2b212f";
+			$db = "heroku_0e9a38ae91e126c";
 			 ///Connexion au serveur MySQL
 			 try {
 			 	$linkpdo = new PDO("mysql:host=$server;dbname=$db", $login, $mdp);
