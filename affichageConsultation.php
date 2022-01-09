@@ -121,7 +121,7 @@
 		 <p><input type="submit" name="Ajouter" value="Ajouter">
 		</form>
 
-		<p><a href=index.php>Accueil</a></p>
+		<p><a href=index.php>Retour à l'accueil</a></p>
 
 		<?php include 'footer.php'; ?>
 	</body>

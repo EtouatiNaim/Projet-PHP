@@ -24,7 +24,7 @@
             }  
           ?>
           <!--  Affichage des entrées du résultat une à une  -->
-          <div class="Affichage-medecin">
+          <div class="Affichage">
             <?php
                 echo '<table border = 1>
                   <tr>

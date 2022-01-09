@@ -42,6 +42,5 @@
 		 <p><input type="submit" name="Valider" value="Valider"><input type="button" name = "Non" value="Non" onclick="history.back()"></p>
 		</form>
 
-		<?php include 'footer.php'; ?>
 	</body>
 </html>
