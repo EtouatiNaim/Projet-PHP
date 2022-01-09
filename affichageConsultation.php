@@ -123,6 +123,5 @@
 
 		<p><a href=index.php>Retour à l'accueil</a></p>
 
-		<?php include 'footer.php'; ?>
 	</body>
 </html>

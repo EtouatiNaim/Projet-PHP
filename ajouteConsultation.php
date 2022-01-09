@@ -121,7 +121,6 @@ if(isset ($_POST['Valider'])){
 			<p><input type="submit" name="Valider" value="Valider"><input type="submit" name = "Annuler" value="Annuler"></p>
 		</form>
 
-		<?php include 'footer.php'; ?>
 
 	</body>
 </html>

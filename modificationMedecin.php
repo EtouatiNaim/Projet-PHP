@@ -68,6 +68,5 @@
 
 		<p><a href=affichageMedecin.php>Retour à la liste des médecins</a></p>
 
-		<?php include 'footer.php'; ?>
 	</body>
 </html>

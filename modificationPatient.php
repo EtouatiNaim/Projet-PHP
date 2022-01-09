@@ -110,6 +110,5 @@
 
 		<p><a href=affichagePatient.php>Retour à la liste des patients</a></p>
 
-		<?php include 'footer.php'; ?>
 	</body>
 </html>

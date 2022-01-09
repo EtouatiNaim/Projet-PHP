@@ -199,7 +199,6 @@
 	</form>
 
 	<p><a href=affichageConsultation.php>Retour à la liste des consultations</a></p>
-	<?php include 'footer.php'; ?>
 </body>
 
 </html>
